@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bait Al Sajahaf</title>
+<meta name="description" content="Bait Al Sajahaf is a niche fragrance house. Six extraits de parfum, blended in small batches from oud, jasmine and sandalwood. The scent they'll never forget.">
+<meta property="og:title" content="Bait Al Sajahaf">
+<meta property="og:description" content="Niche extraits de parfum, blended in small batches. The scent they'll never forget.">
+<meta property="og:type" content="website">
+
+<!-- Fonts: swap here if you change typefaces (and update --serif / --sans below) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+
+<!-- Structured data for search engines. Product schema is injected on each product page. -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"Bait Al Sajahaf","slogan":"The scent they'll never forget","description":"Niche fragrance house creating extraits de parfum in small batches."}
+</script>
+
+<style>
+/* =====================================================================
+   DESIGN TOKENS
+   Layout idea: editorial, one idea per screen, 1px hairlines, slow motion.
+   Change colours here and the whole site follows.
+   ===================================================================== */
+:root{
+  /* Light (warm ivory) */
+  --bg:#f6f1e7; --bg2:#ece5d6; --ink:#1b1814; --mute:#6a6155; --gold:#8a6a34;
+  --line:rgba(27,24,20,.16); --scrim:rgba(246,241,231,.94);
+  --serif:'Cormorant Garamond',Georgia,'Times New Roman',serif;
+  --sans:'Jost',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --gut:clamp(20px,5vw,72px);
+  --nav:72px;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0c0b0a; --bg2:#141210; --ink:#efe8dc; --mute:#a69d8e; --gold:#c8ad82;
+    --line:rgba(239,232,220,.15); --scrim:rgba(12,11,10,.94); color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0c0b0a; --bg2:#141210; --ink:#efe8dc; --mute:#a69d8e; --gold:#c8ad82;
+  --line:rgba(239,232,220,.15); --scrim:rgba(12,11,10,.94); color-scheme:dark;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--nav) + 8px);-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:300;font-size:16px;line-height:1.7;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;transition:background .6s var(--ease),color .6s var(--ease)}
+img,svg{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+ul{list-style:none}
+:focus-visible{outline:1px solid var(--gold);outline-offset:4px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:absolute;left:12px;top:-60px;background:var(--gold);color:var(--bg);padding:10px 16px;z-index:200;font-size:13px;letter-spacing:.1em}
+.skip:focus{top:12px}
+
+/* Type */
+h1,h2,h3,h4{font-family:var(--serif);font-weight:300;line-height:1.08;text-wrap:balance}
+h2{font-size:clamp(2.1rem,4.6vw,3.6rem);letter-spacing:.005em}
+h3{font-size:1.55rem;font-weight:400}
+p{max-width:62ch}
+em{font-family:var(--serif);font-style:italic;font-size:1.06em}
+.eyebrow{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);font-weight:400}
+.mute{color:var(--mute)}
+.lead{font-family:var(--serif);font-size:clamp(1.25rem,2vw,1.6rem);line-height:1.5;font-weight:300}
+
+/* Layout */
+.wrap{padding-inline:var(--gut);max-width:1480px;margin-inline:auto}
+section{padding-block:clamp(72px,11vw,160px)}
+.head{display:grid;gap:18px;margin-bottom:clamp(36px,6vw,80px)}
+.head p{color:var(--mute)}
+.rule{height:1px;background:var(--line);border:0}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:50px;padding:0 34px;border:1px solid var(--gold);
+  font-size:11px;letter-spacing:.3em;text-transform:uppercase;font-weight:400;color:var(--ink);
+  transition:background .5s var(--ease),color .5s var(--ease),border-color .5s var(--ease)}
+.btn:hover{background:var(--gold);color:var(--bg)}
+.btn.solid{background:var(--gold);color:var(--bg)}
+.btn.solid:hover{background:transparent;color:var(--ink)}
+.btn.full{width:100%}
+.link{font-size:11px;letter-spacing:.3em;text-transform:uppercase;border-bottom:1px solid var(--gold);padding-bottom:6px;font-weight:400;transition:color .4s}
+.link:hover{color:var(--gold)}
+
+/* Reveal on scroll. Only elements that start below the fold are hidden, and only until they are reached. */
+.rv{transition:opacity 1.2s var(--ease),transform 1.2s var(--ease)}
+.rv.pre{opacity:0;transform:translateY(22px)}
+
+/* ---------------- NAV ---------------- */
+.nav{position:fixed;inset:0 0 auto 0;height:var(--nav);z-index:60;transition:background .6s var(--ease),border-color .6s var(--ease),color .6s var(--ease);
+  border-bottom:1px solid transparent;color:var(--ink);background:var(--scrim);border-color:var(--line);
+  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+.nav.top{background:transparent;border-color:transparent;color:#efe8dc;-webkit-backdrop-filter:none;backdrop-filter:none}
+.nav-in{height:100%;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px}
+.nav-links{display:none;gap:30px}
+.nav-links a,.menu a{font-size:11px;letter-spacing:.28em;text-transform:uppercase;font-weight:400;position:relative;padding:6px 0}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:1px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease)}
+.nav-links a:hover::after{transform:scaleX(1)}
+.logo{font-family:var(--serif);font-size:clamp(1.05rem,2.6vw,1.45rem);letter-spacing:.34em;text-transform:uppercase;font-weight:400;white-space:nowrap}
+.icons{display:flex;justify-content:flex-end;gap:2px}
+.ib{width:40px;height:40px;display:grid;place-items:center;position:relative}
+.ib svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round}
+.ib .n{position:absolute;top:3px;right:2px;min-width:16px;height:16px;border-radius:8px;background:var(--gold);color:var(--bg);font-size:10px;line-height:16px;text-align:center;font-weight:500;padding:0 4px}
+.ib .n:empty{display:none}
+.burger{justify-self:start}
+.theme-nav{display:none}
+@media(min-width:560px){.theme-nav{display:grid}}
+@media(min-width:1000px){.nav-links{display:flex}.burger{display:none}.nav-in{grid-template-columns:1fr auto 1fr}}
+
+.menu{position:fixed;inset:0;z-index:55;background:var(--bg);padding:calc(var(--nav) + 30px) var(--gut) 40px;display:flex;flex-direction:column;gap:6px;
+  opacity:0;visibility:hidden;transition:opacity .5s var(--ease),visibility .5s}
+.menu.open{opacity:1;visibility:visible}
+.menu a,.menu button.m{font-family:var(--serif);font-size:2rem;letter-spacing:.04em;text-transform:none;padding:12px 0;border-bottom:1px solid var(--line);text-align:left;font-weight:300}
+
+/* ---------------- HERO ---------------- */
+/* The hero is always dark so the bottle glows, in both themes. */
+.hero{position:relative;min-height:100svh;padding:0;color:#efe8dc;background:#0b0908;overflow:hidden;display:flex;align-items:flex-end}
+.hero-bg{position:absolute;inset:-8% 0 -8% 0;background:
+  radial-gradient(60% 55% at 68% 42%,rgba(200,150,80,.28),transparent 70%),
+  radial-gradient(40% 40% at 20% 85%,rgba(120,70,40,.25),transparent 70%),
+  linear-gradient(180deg,#0b0908 0%,#16100c 55%,#0b0908 100%);
+  animation:breathe 18s ease-in-out infinite alternate;will-change:transform}
+@keyframes breathe{from{filter:brightness(.92)}to{filter:brightness(1.12)}}
+.grain{position:absolute;inset:0;opacity:.07;pointer-events:none;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+.hero-bottle{position:absolute;right:50%;transform:translateX(50%);top:calc(var(--nav) + 4vh);height:52svh;aspect-ratio:260/500;will-change:transform}
+.hero-bottle svg{height:100%;width:auto;filter:drop-shadow(0 40px 60px rgba(0,0,0,.6));animation:float 9s ease-in-out infinite alternate}
+@keyframes float{from{transform:translateY(0)}to{transform:translateY(-14px)}}
+.hero-copy{position:relative;z-index:2;padding-bottom:clamp(48px,9vh,96px);display:grid;gap:22px;width:100%}
+.hero h1{font-size:clamp(2.4rem,8.6vw,7.4rem);letter-spacing:.14em;text-transform:uppercase;font-weight:300;line-height:1}
+.hero .tag{font-family:var(--serif);font-style:italic;font-size:clamp(1.2rem,2.4vw,1.9rem);color:#d8c9ad}
+.hero .eyebrow{color:#c8ad82}
+.hero .btn{color:#efe8dc;border-color:#c8ad82;justify-self:start}
+.hero .btn:hover{background:#c8ad82;color:#0c0b0a}
+.cue{position:absolute;right:var(--gut);bottom:44px;writing-mode:vertical-rl;font-size:10px;letter-spacing:.35em;text-transform:uppercase;color:#a69d8e;display:none}
+.cue::after{content:"";display:inline-block;width:1px;height:56px;background:#c8ad82;margin-top:14px;animation:drip 3s ease-in-out infinite;transform-origin:top}
+@keyframes drip{0%{transform:scaleY(0)}60%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
+@media(min-width:900px){
+  .hero-bottle{right:18%;transform:none;height:72svh;top:calc(var(--nav) + 6vh)}
+  .cue{display:block}
+}
+
+/* ---------------- STORY ---------------- */
+.story{display:grid;gap:48px}
+.slot{overflow:hidden;position:relative;background:var(--bg2)}
+.slot svg{width:100%;height:100%;object-fit:cover;transition:transform 2.4s var(--ease)}
+.slot img{width:100%;height:100%;object-fit:cover;transition:transform 2.4s var(--ease)}
+.slot:hover svg,.slot:hover img{transform:scale(1.04)}
+.story .slot{aspect-ratio:4/5}
+.story-copy{display:grid;gap:26px;align-content:center}
+.story-copy p{color:var(--mute)}
+.facts{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line);margin-top:10px}
+.facts div{padding:22px 0;border-bottom:1px solid var(--line)}
+.facts div:nth-child(odd){padding-right:16px;border-right:1px solid var(--line)}
+.facts div:nth-child(even){padding-left:22px}
+.facts b{display:block;font-family:var(--serif);font-weight:300;font-size:2rem;line-height:1.1;color:var(--ink)}
+.facts span{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--mute)}
+@media(min-width:900px){.story{grid-template-columns:1fr 1fr;gap:clamp(60px,8vw,140px)}}
+
+/* ---------------- COLLECTION ---------------- */
+.grid{display:grid;grid-template-columns:1fr;gap:56px 28px}
+@media(min-width:560px){.grid{grid-template-columns:1fr 1fr}}
+@media(min-width:1000px){.grid{grid-template-columns:repeat(3,1fr);gap:72px 36px}}
+.card{position:relative}
+.card-img{display:block;position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--bg2)}
+.im{position:absolute;inset:0;transition:opacity 1s var(--ease)}
+.im svg,.im img{width:100%;height:100%;object-fit:cover;transition:transform 2s var(--ease)}
+.im.b{opacity:0}
+.card:hover .im.b,.card:focus-within .im.b{opacity:1}
+.card:hover .im svg,.card:hover .im img{transform:scale(1.05)}
+.wish{position:absolute;top:12px;right:12px;width:40px;height:40px;display:grid;place-items:center;z-index:3;color:#efe8dc;mix-blend-mode:normal}
+.wish svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.2;transition:fill .4s,transform .4s var(--ease)}
+.wish[aria-pressed="true"] svg{fill:#c8ad82;stroke:#c8ad82}
+.wish:hover svg{transform:scale(1.15)}
+.card-body{display:grid;gap:6px;padding-top:20px}
+.card-body h3 a:hover{color:var(--gold)}
+.notes{font-size:13px;color:var(--mute);letter-spacing:.04em}
+.price{font-size:13px;letter-spacing:.12em;margin-top:4px}
+
+/* ---------------- CRAFT ---------------- */
+.craft{background:var(--bg2)}
+.mats{display:grid;gap:36px}
+@media(min-width:640px){.mats{grid-template-columns:1fr 1fr}}
+@media(min-width:1100px){.mats{grid-template-columns:repeat(4,1fr);gap:28px}}
+.mat .slot{aspect-ratio:3/4;margin-bottom:22px}
+.mat h3{margin:6px 0 10px}
+.mat p{font-size:14px;color:var(--mute)}
+
+/* ---------------- FINDER ---------------- */
+.finder{display:grid;gap:48px}
+@media(min-width:900px){.finder{grid-template-columns:5fr 7fr;gap:clamp(60px,8vw,140px);align-items:start}}
+.quiz{border:1px solid var(--line);padding:clamp(24px,4vw,56px);min-height:420px;display:flex;flex-direction:column;gap:28px}
+.prog{display:flex;gap:6px}
+.prog i{flex:1;height:1px;background:var(--line);transition:background .6s}
+.prog i.on{background:var(--gold)}
+.quiz h3{font-size:clamp(1.6rem,3vw,2.2rem)}
+.opts{display:grid;gap:12px}
+.opt{border:1px solid var(--line);padding:16px 20px;text-align:left;font-size:15px;transition:border-color .4s,background .4s,transform .4s var(--ease)}
+.opt:hover{border-color:var(--gold);transform:translateX(4px)}
+.result{display:grid;gap:24px}
+@media(min-width:640px){.result{grid-template-columns:200px 1fr;align-items:center}}
+.result .slot{aspect-ratio:4/5}
+.result .acts{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+
+/* ---------------- GIFTS ---------------- */
+.gifts{display:grid;gap:28px}
+@media(min-width:900px){.gifts{grid-template-columns:repeat(3,1fr)}.gifts .feature{grid-column:1/-1;grid-template-columns:1fr 1fr}}
+.gift{display:grid;gap:22px;align-content:start}
+.gift .slot{aspect-ratio:4/3}
+.gift.feature{border:1px solid var(--line);padding:clamp(20px,3vw,40px);gap:clamp(24px,4vw,64px)}
+.gift.feature .slot{aspect-ratio:16/10}
+.gift .copy{display:grid;gap:14px;align-content:center}
+.gift p{color:var(--mute);font-size:14px}
+.gift .row{display:flex;gap:20px;align-items:center;flex-wrap:wrap;margin-top:6px}
+
+/* ---------------- JOURNAL ---------------- */
+.jgrid{display:grid;gap:44px}
+@media(min-width:800px){.jgrid{grid-template-columns:repeat(3,1fr);gap:32px}}
+.j .slot{aspect-ratio:4/3;margin-bottom:20px}
+.j h3{margin:8px 0 8px;transition:color .4s}
+.j:hover h3{color:var(--gold)}
+.j p{font-size:14px;color:var(--mute)}
+
+/* ---------------- NEWSLETTER ---------------- */
+.news{text-align:center;border-block:1px solid var(--line)}
+.news .in{display:grid;gap:22px;justify-items:center}
+.news p{color:var(--mute);margin-inline:auto}
+.nform{display:flex;gap:12px;width:min(520px,100%);border-bottom:1px solid var(--ink);margin-top:18px;align-items:center}
+.nform input{flex:1;min-width:0;background:none;border:0;color:var(--ink);font:inherit;font-size:16px;padding:14px 0}
+.nform input::placeholder{color:var(--mute)}
+.nform input:focus{outline:none}
+.nform:focus-within{border-color:var(--gold)}
+.nform button{font-size:11px;letter-spacing:.3em;text-transform:uppercase;font-weight:400;padding:10px 0 10px 12px}
+.nform button:hover{color:var(--gold)}
+.msg{min-height:1.6em;font-size:14px;color:var(--gold)}
+
+/* ---------------- FOOTER ---------------- */
+footer{padding:clamp(64px,9vw,120px) 0 40px}
+.fgrid{display:grid;gap:44px}
+@media(min-width:760px){.fgrid{grid-template-columns:1.4fr 1fr 1fr 1.3fr}}
+.fgrid h4{font-family:var(--sans);font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);font-weight:400;margin-bottom:18px}
+.fgrid li{margin-bottom:10px;font-size:14px;color:var(--mute)}
+.fgrid li a:hover{color:var(--ink)}
+.fgrid .logo{display:block;margin-bottom:16px}
+.social{display:flex;gap:6px;margin-top:20px}
+.social a{width:40px;height:40px;border:1px solid var(--line);display:grid;place-items:center;transition:border-color .4s,color .4s}
+.social a:hover{border-color:var(--gold);color:var(--gold)}
+.social svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.2}
+.stores select{width:100%;background:var(--bg);color:var(--ink);border:1px solid var(--line);padding:12px;font:inherit;font-size:14px;margin-bottom:14px}
+.stores address{font-style:normal;font-size:14px;color:var(--mute);line-height:1.8;min-height:5.4em}
+.fbase{display:flex;flex-wrap:wrap;gap:14px 28px;justify-content:space-between;margin-top:64px;padding-top:24px;border-top:1px solid var(--line);font-size:12px;color:var(--mute);letter-spacing:.06em}
+.fbase ul{display:flex;gap:22px;flex-wrap:wrap}
+
+/* ---------------- PRODUCT PAGE ---------------- */
+#product{padding-top:calc(var(--nav) + 28px);padding-bottom:clamp(60px,9vw,120px)}
+.crumbs{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--mute);margin-bottom:28px;display:flex;gap:10px;flex-wrap:wrap}
+.crumbs a:hover{color:var(--gold)}
+.pp{display:grid;gap:40px}
+@media(min-width:960px){.pp{grid-template-columns:7fr 5fr;gap:clamp(48px,6vw,100px);align-items:start}.gal{position:sticky;top:calc(var(--nav) + 24px)}}
+.gal .main{aspect-ratio:4/5;overflow:hidden;background:var(--bg2)}
+.gal .main svg,.gal .main img{width:100%;height:100%;object-fit:cover}
+.gal .main.swap svg,.gal .main.swap img{animation:fadein .9s var(--ease)}
+@keyframes fadein{from{opacity:0}to{opacity:1}}
+.thumbs{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:10px}
+.thumbs button{aspect-ratio:1;overflow:hidden;border:1px solid transparent;opacity:.6;transition:opacity .4s,border-color .4s;background:var(--bg2)}
+.thumbs button svg,.thumbs button img{width:100%;height:100%;object-fit:cover}
+.thumbs button[aria-current="true"],.thumbs button:hover{opacity:1;border-color:var(--gold)}
+.info{display:grid;gap:30px}
+.info h1{font-size:clamp(2.6rem,5vw,4.2rem);letter-spacing:.04em}
+.info .sub{display:grid;gap:10px}
+.stars{color:var(--gold);letter-spacing:.2em;font-size:13px}
+.big-price{font-family:var(--serif);font-size:2rem;font-weight:300}
+.sizes{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.sizes button{border:1px solid var(--line);padding:14px 6px;font-size:13px;letter-spacing:.14em;display:grid;gap:2px;transition:border-color .4s,background .4s}
+.sizes button small{font-size:11px;color:var(--mute);letter-spacing:.06em}
+.sizes button:hover{border-color:var(--gold)}
+.sizes button[aria-pressed="true"]{border-color:var(--gold);background:var(--bg2)}
+.label{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);font-weight:400;margin-bottom:12px;display:block}
+.buy{display:grid;grid-template-columns:1fr 52px;gap:10px}
+.buy .wish{position:static;color:var(--ink);border:1px solid var(--line);width:52px;height:50px}
+.buy .wish[aria-pressed="true"]{border-color:var(--gold)}
+.pyr{display:grid;border-top:1px solid var(--line)}
+.pyr>div{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:18px 0;border-bottom:1px solid var(--line);align-items:center}
+.pyr svg{width:30px;height:30px;fill:none;stroke:var(--gold);stroke-width:1;stroke-linecap:round}
+.pyr b{display:block;font-size:11px;letter-spacing:.28em;text-transform:uppercase;font-weight:400;color:var(--mute)}
+.pyr span{font-family:var(--serif);font-size:1.25rem}
+.meters{display:grid;gap:16px}
+.meter{display:grid;grid-template-columns:96px 1fr auto;gap:14px;align-items:center;font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+.meter .segs{display:grid;grid-template-columns:repeat(5,1fr);gap:4px}
+.meter .segs i{height:2px;background:var(--line)}
+.meter .segs i.on{background:var(--gold)}
+.meter em{font-family:var(--sans);font-style:normal;text-transform:none;letter-spacing:.04em;color:var(--mute);font-size:13px}
+details{border-bottom:1px solid var(--line)}
+details:first-of-type{border-top:1px solid var(--line)}
+summary{list-style:none;cursor:pointer;padding:18px 0;font-size:11px;letter-spacing:.28em;text-transform:uppercase;font-weight:400;display:flex;justify-content:space-between}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:18px;line-height:1;transition:transform .4s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{padding-bottom:20px;color:var(--mute);font-size:14px}
+.reviews{margin-top:clamp(64px,9vw,120px);display:grid;gap:36px}
+.rgrid{display:grid;gap:0}
+@media(min-width:800px){.rgrid{grid-template-columns:1fr 1fr;gap:0 56px}}
+.rev{padding:26px 0;border-top:1px solid var(--line);display:grid;gap:8px}
+.rev p{color:var(--mute);font-size:15px}
+.rev small{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--mute)}
+.also{margin-top:clamp(64px,9vw,120px)}
+
+/* ---------------- DRAWER, SEARCH, TOAST ---------------- */
+.scrim{position:fixed;inset:0;background:rgba(0,0,0,.55);opacity:0;visibility:hidden;transition:opacity .6s var(--ease),visibility .6s;z-index:80}
+.scrim.on{opacity:1;visibility:visible}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(440px,100%);background:var(--bg);z-index:90;display:flex;flex-direction:column;
+  transform:translateX(100%);visibility:hidden;transition:transform .7s var(--ease),visibility .7s;border-left:1px solid var(--line)}
+.drawer.on{transform:none;visibility:visible}
+.dh{display:flex;justify-content:space-between;align-items:center;padding:14px 20px 14px 28px;border-bottom:1px solid var(--line)}
+.dh h2{font-size:1.6rem}
+.db{flex:1;overflow:auto;padding:8px 28px}
+.line{display:grid;grid-template-columns:76px 1fr;gap:18px;padding:20px 0;border-bottom:1px solid var(--line)}
+.line .slot{aspect-ratio:4/5}
+.line h3{font-size:1.3rem}
+.line .meta{font-size:12px;color:var(--mute);letter-spacing:.08em}
+.line .ctl{display:flex;justify-content:space-between;align-items:center;margin-top:10px;font-size:13px}
+.qty{display:inline-flex;align-items:center;border:1px solid var(--line)}
+.qty button{width:32px;height:32px;font-size:16px}
+.qty span{min-width:26px;text-align:center}
+.rm{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--mute);border-bottom:1px solid var(--line)}
+.rm:hover{color:var(--ink)}
+.empty{padding:60px 0;text-align:center;display:grid;gap:18px;justify-items:center;color:var(--mute)}
+.df{padding:20px 28px 28px;border-top:1px solid var(--line);display:grid;gap:14px}
+.ship{font-size:12px;color:var(--mute);letter-spacing:.04em;display:grid;gap:8px}
+.ship i{display:block;height:1px;background:var(--line);position:relative}
+.ship i b{position:absolute;left:0;top:0;height:1px;background:var(--gold);transition:width .8s var(--ease)}
+.sub-row{display:flex;justify-content:space-between;font-size:14px;letter-spacing:.06em}
+.chk{display:flex;gap:10px;align-items:center;font-size:13px;color:var(--mute)}
+.chk input{accent-color:var(--gold);width:16px;height:16px}
+.search{position:fixed;inset:0 0 auto 0;background:var(--bg);z-index:90;padding:calc(var(--nav) - 10px) var(--gut) 36px;border-bottom:1px solid var(--line);
+  transform:translateY(-102%);visibility:hidden;transition:transform .7s var(--ease),visibility .7s;max-height:100svh;overflow:auto}
+.search.on{transform:none;visibility:visible}
+.sbar{display:flex;gap:12px;align-items:center;border-bottom:1px solid var(--ink);max-width:900px;margin:0 auto}
+.sbar input{flex:1;min-width:0;background:none;border:0;color:var(--ink);font-family:var(--serif);font-size:clamp(1.6rem,4vw,2.6rem);padding:14px 0;font-weight:300}
+.sbar input:focus{outline:none}
+.sbar input::placeholder{color:var(--mute)}
+.sres{max-width:900px;margin:18px auto 0;display:grid}
+.sres a{display:grid;grid-template-columns:56px 1fr auto;gap:18px;align-items:center;padding:14px 0;border-bottom:1px solid var(--line);transition:padding .4s var(--ease)}
+.sres a:hover,.sres a:focus-visible{padding-left:12px}
+.sres .slot{aspect-ratio:1}
+.sres h3{font-size:1.3rem}
+.sres span{font-size:13px;color:var(--mute)}
+.toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,20px);background:var(--ink);color:var(--bg);padding:14px 26px;font-size:12px;letter-spacing:.14em;
+  opacity:0;pointer-events:none;transition:opacity .5s,transform .5s var(--ease);z-index:120;max-width:calc(100% - 32px);text-align:center}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+
+main{transition:opacity .28s ease}
+main.out{opacity:0}
+[hidden]{display:none!important}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+  .rv.pre{opacity:1;transform:none}
+}
+</style>
+</head>
+
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- ====================== NAVBAR ====================== -->
+<header class="nav top" id="nav">
+  <div class="wrap nav-in" style="width:100%">
+    <div style="display:flex;align-items:center">
+      <button class="ib burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><svg viewBox="0 0 24 24"><path d="M3 8h18M3 16h18"/></svg></button>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#collection">Collection</a>
+        <a href="#story">The House</a>
+        <a href="#craft">Craft</a>
+        <a href="#finder">Scent Finder</a>
+        <a href="#gifts">Gifts</a>
+      </nav>
+    </div>
+    <a class="logo" href="#top" id="logo" aria-label="Bait Al Sajahaf, home">Bait Al Sajahaf</a>
+    <div class="icons">
+      <button class="ib" id="btnSearch" aria-label="Search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l5 5"/></svg></button>
+      <button class="ib theme-nav" id="btnTheme" aria-label="Switch to light theme"></button>
+      <button class="ib" id="btnWish" aria-label="Wishlist"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.4A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg><span class="n" id="wishN"></span></button>
+      <button class="ib" id="btnCart" aria-label="Open bag"><svg viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6L5 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span class="n" id="cartN"></span></button>
+    </div>
+  </div>
+</header>
+
+<div class="menu" id="menu" aria-hidden="true">
+  <a href="#collection">Collection</a>
+  <a href="#story">The House</a>
+  <a href="#craft">Craft</a>
+  <a href="#finder">Scent Finder</a>
+  <a href="#gifts">Gifts &amp; Discovery</a>
+  <a href="#journal">Journal</a>
+  <button class="m" id="menuTheme" type="button">Light / Dark</button>
+</div>
+
+<main id="main">
+
+<!-- ====================== HOME ====================== -->
+<div id="home">
+
+  <!-- 1. HERO
+       REPLACE: for a cinematic photo, set IMG.hero in the script (see "IMAGES" block).
+       For video, put <video autoplay muted loop playsinline src="your.mp4"> inside .hero-bg. -->
+  <section class="hero" id="top" aria-label="Introduction" style="padding:0">
+    <div class="hero-bg" id="heroBg"></div>
+    <div class="hero-bottle" id="heroBottle" role="img" aria-label="Placeholder: a Bait Al Sajahaf flacon. Replace with your own photography."></div>
+    <div class="grain" aria-hidden="true"></div>
+    <div class="wrap hero-copy">
+      <p class="eyebrow">Extrait de parfum</p>
+      <h1>Bait Al Sajahaf</h1>
+      <p class="tag">The scent they'll never forget</p>
+      <a class="btn" href="#collection">Discover the Collection</a>
+    </div>
+    <span class="cue" aria-hidden="true">Scroll</span>
+  </section>
+
+  <!-- 2. BRAND STORY -->
+  <section id="story" aria-labelledby="storyH">
+    <div class="wrap story">
+      <div class="slot rv" data-slot="story"></div>
+      <div class="story-copy rv">
+        <p class="eyebrow">The House</p>
+        <h2 id="storyH">Made slowly, worn for a lifetime.</h2>
+        <p class="lead">It began with a single bottle of aged oud and a patient distiller.</p>
+        <p>We still work that way. Each extrait is blended in small batches, rested for ninety days and filtered by hand. The house draws on the old attar traditions of the subcontinent and the Gulf, then lets modern perfumery clear the air around them.</p>
+        <p>Nothing is rushed. Nothing is loud. A fragrance should arrive a moment after you do, and stay a moment after you leave.</p>
+        <div class="facts">
+          <div><b>90 days</b><span>Rest before bottling</span></div>
+          <div><b>22%</b><span>Perfume oil</span></div>
+          <div><b>Six</b><span>Compositions, no more</span></div>
+          <div><b>Numbered</b><span>Every batch</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. SIGNATURE COLLECTION -->
+  <section id="collection" aria-labelledby="colH" style="padding-top:0">
+    <div class="wrap">
+      <hr class="rule" style="margin-bottom:clamp(72px,11vw,160px)">
+      <div class="head rv">
+        <p class="eyebrow">The Signature Collection</p>
+        <h2 id="colH">Six extraits. Each one a room you can wear.</h2>
+        <p>Unisex by design. Every composition is 22% oil, built on a heart of natural absolutes.</p>
+      </div>
+      <div class="grid" id="grid"></div>
+    </div>
+  </section>
+
+  <!-- 6. INGREDIENTS / CRAFT -->
+  <section class="craft" id="craft" aria-labelledby="craftH">
+    <div class="wrap">
+      <div class="head rv">
+        <p class="eyebrow">Ingredients &amp; Craft</p>
+        <h2 id="craftH">Raw materials, honestly sourced.</h2>
+        <p>We buy fewer materials, and we buy them better. Each one is aged, steamed or pressed close to where it grows.</p>
+      </div>
+      <div class="mats" id="mats"></div>
+    </div>
+  </section>
+
+  <!-- 5. SCENT FINDER -->
+  <section id="finder" aria-labelledby="findH">
+    <div class="wrap finder">
+      <div class="head rv" style="margin:0">
+        <p class="eyebrow">Scent Finder</p>
+        <h2 id="findH">Four questions. One bottle that suits you.</h2>
+        <p>There are no wrong answers. Choose what feels true tonight, and we will point you to the right extrait.</p>
+      </div>
+      <div class="quiz rv" id="quiz" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <!-- 7. GIFT SETS + DISCOVERY -->
+  <section id="gifts" aria-labelledby="giftH" style="padding-top:0">
+    <div class="wrap">
+      <hr class="rule" style="margin-bottom:clamp(72px,11vw,160px)">
+      <div class="head rv">
+        <p class="eyebrow">Gifts &amp; Discovery</p>
+        <h2 id="giftH">Begin with a vial. Give with a ribbon.</h2>
+        <p>Every order arrives in a linen-wrapped box. Gift wrap and a handwritten note are complimentary.</p>
+      </div>
+      <div class="gifts" id="giftGrid"></div>
+    </div>
+  </section>
+
+  <!-- 8. JOURNAL / PRESS
+       REPLACE: sample titles and the press line are placeholders. -->
+  <section id="journal" aria-labelledby="jH" style="padding-top:0">
+    <div class="wrap">
+      <div class="head rv">
+        <p class="eyebrow">Journal &amp; Press</p>
+        <h2 id="jH">Notes from the atelier.</h2>
+      </div>
+      <div class="jgrid" id="jgrid"></div>
+    </div>
+  </section>
+
+  <!-- 9. NEWSLETTER -->
+  <section class="news" id="newsletter" aria-labelledby="nH">
+    <div class="wrap in rv">
+      <p class="eyebrow">Letters from the atelier</p>
+      <h2 id="nH">Four letters a year.</h2>
+      <p>Harvest notes, rare releases and first access to each new batch. Nothing else.</p>
+      <form class="nform" id="nform" novalidate>
+        <label class="sr" for="email">Email address</label>
+        <input id="email" name="email" type="email" placeholder="Your email address" autocomplete="email" required>
+        <button type="submit">Subscribe</button>
+      </form>
+      <p class="msg" id="nmsg" role="status"></p>
+    </div>
+  </section>
+</div>
+
+<!-- ====================== PRODUCT VIEW (filled by script) ====================== -->
+<div id="product" class="wrap" hidden></div>
+
+</main>
+
+<!-- 10. FOOTER
+     REPLACE: store addresses, contact details, social links and policy URLs are placeholders. -->
+<footer id="footer">
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <a class="logo" href="#top">Bait Al Sajahaf</a>
+        <p class="mute" style="font-size:14px">A niche fragrance house. Small batches, slow resting, nothing hurried.</p>
+        <div class="social">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="4.5"/><circle cx="12" cy="12" r="3.5"/><circle cx="17" cy="7" r=".6"/></svg></a>
+          <a href="#" aria-label="Pinterest"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M11 8.5c2.5-.8 4.500.5 4 3-.4 2-2 3-3.200 2.200M11 9l-2 8"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="3.500"/><path d="M10.500 9.500v5l4-2.500z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#collection">Collection</a></li>
+          <li><a href="#finder">Scent Finder</a></li>
+          <li><a href="#gifts">Gifts &amp; Discovery</a></li>
+          <li><a href="#craft">Craft</a></li>
+          <li><a href="#journal">Journal</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li>care@baitalsajahaf.example</li>
+          <li>+91 00000 00000</li>
+          <li>Monday to Saturday, 10:00 to 18:00</li>
+        </ul>
+      </div>
+      <div class="stores">
+        <h4>Store locator</h4>
+        <label class="sr" for="city">Choose a city</label>
+        <select id="city"></select>
+        <address id="addr"></address>
+      </div>
+    </div>
+    <div class="fbase">
+      <span>&copy; 2026 Bait Al Sajahaf. All rights reserved.</span>
+      <ul>
+        <li><a href="#">Shipping</a></li>
+        <li><a href="#">Returns</a></li>
+        <li><a href="#">Privacy</a></li>
+        <li><a href="#">Terms</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<!-- Cart / wishlist drawer -->
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="dTitle" aria-hidden="true">
+  <div class="dh"><h2 id="dTitle">Your bag</h2><button class="ib" id="dClose" aria-label="Close"><svg viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19"/></svg></button></div>
+  <div class="db" id="dBody"></div>
+  <div class="df" id="dFoot"></div>
+</aside>
+
+<!-- Search -->
+<div class="search" id="search" role="dialog" aria-modal="true" aria-label="Search" aria-hidden="true">
+  <div class="sbar">
+    <label class="sr" for="sq">Search fragrances</label>
+    <input id="sq" type="search" placeholder="Search by name or note" autocomplete="off">
+    <button class="ib" id="sClose" aria-label="Close search"><svg viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
+  </div>
+  <div class="sres" id="sres"></div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* =====================================================================
+   IMAGES  ·  REPLACE WITH YOUR OWN PHOTOGRAPHY
+   Everything on this page ships with generated artwork so it works offline.
+   To use a real photo, put a path or URL in the matching field. Keep the
+   alt text meaningful. Leave a field empty to keep the placeholder.
+   (Tip: inside Claude artifacts, remote images are blocked; use data: URIs.
+   On your own host, normal paths such as "img/hero.jpg" work.)
+   ===================================================================== */
+const IMG = {
+  hero:  '',   // full-bleed hero photo or bottle cut-out (portrait works best)
+  story: '',   // brand story, portrait 4:5
+  craft: { oud:'', jasmine:'', sandal:'', saffron:'' },       // portrait 3:4
+  gifts: { discovery:'', pair:'', garden:'', coffret:'' },   // landscape 4:3
+  journal: ['', '', '']                                        // landscape 4:3
+};
+
+/* =====================================================================
+   PRODUCTS  ·  edit names, notes, prices (₹), copy and colours here.
+   photos: [] -> add up to four of your own images per product.
+   prices: [30 ml, 50 ml, 100 ml]
+   ===================================================================== */
+const P = [
+ {id:'layl', name:'Layl', family:'Smoked oud', line:'Oud · Saffron · Amber',
+  top:['Saffron','Cardamom','Bergamot'], heart:['Assam oud','Damask rose','Frankincense'], base:['Smoked amber','Patchouli','Suede'],
+  prices:[5200,7800,11900], long:5, sill:4,
+  desc:'A room after the guests have gone. Smoked oud and saffron settle into warm amber, unhurried and a little dangerous.',
+  mood:'Candlelight, cashmere over bare skin, a door left open.',
+  traits:{bold:3,woody:2,warm:2,floral:0,fresh:0,soft:0},
+  c:{b1:'#2b1912',b2:'#0f0a08',l1:'#d39a55',l2:'#6b3c1c',glow:'#d9a45f',ink:'#e8d9bd'}, photos:[],
+  rev:[['Aarav M.','Mumbai',5,'Lasted through a long dinner and was still on my coat the next morning. Smoky without being heavy.'],['Sana K.','Dubai',5,'The saffron opening is startling, then it softens into something I cannot stop smelling on my wrist.']]},
+ {id:'yasmin-hour', name:'Yasmin Hour', family:'White floral', line:'Jasmine · Tuberose · Musk',
+  top:['Green mandarin','Neroli','Pink pepper'], heart:['Jasmine sambac','Tuberose','Orange blossom'], base:['White musk','Sandalwood','Ambrette'],
+  prices:[4200,6400,9800], long:3, sill:3,
+  desc:'Jasmine, gathered before dawn while the buds are still closed. Creamy, green and quietly luminous against the skin.',
+  mood:'Linen sheets, a balcony at dusk, bare feet on cool stone.',
+  traits:{bold:1,woody:0,warm:1,floral:3,fresh:1,soft:2},
+  c:{b1:'#ebe1d1',b2:'#cbbba1',l1:'#f3e4b9',l2:'#d1b068',glow:'#fff6df',ink:'#4a3a22'}, photos:[],
+  rev:[['Meera R.','Hyderabad',5,'Real jasmine, not the soapy kind. It smells like the hour before a wedding.'],['Daniel P.','London',4,'Soft and close to the skin. I wear it to the office and nobody minds.']]},
+ {id:'chandan-veil', name:'Chandan Veil', family:'Creamy wood', line:'Sandalwood · Milk · Cardamom',
+  top:['Cardamom','Pear skin','Lavender'], heart:['Mysore-style sandalwood','Iris','Warm milk'], base:['Cedar','Vanilla bean','Cashmeran'],
+  prices:[4600,6900,10500], long:4, sill:2,
+  desc:'Sandalwood steamed slowly until it turns to milk and silk. A soft, close fragrance meant for the person standing nearest you.',
+  mood:'A quiet library, wool socks, the last page of a long book.',
+  traits:{bold:0,woody:3,warm:2,floral:1,fresh:0,soft:3},
+  c:{b1:'#dcc7a5',b2:'#8f7452',l1:'#ecd3a0',l2:'#b78a4a',glow:'#f5e3bf',ink:'#3b2c18'}, photos:[],
+  rev:[['Vikram S.','Delhi',5,'Smooth, creamy and strangely calming. My most complimented scent by far.'],['Lena H.','Berlin',5,'Sandalwood that smells expensive and alive. The dry down is lovely.']]},
+ {id:'gulab-smoke', name:'Gulab Smoke', family:'Rose and incense', line:'Rose · Black pepper · Patchouli',
+  top:['Black pepper','Pink grapefruit','Elemi'], heart:['Damask rose','Geranium','Birch tar'], base:['Patchouli','Incense','Cedar'],
+  prices:[4600,6900,10500], long:4, sill:4,
+  desc:'Damask rose held over a slow fire. Petals, pepper and a thread of smoke, more shadow than garden.',
+  mood:'Dark wine, velvet, a garden after the lamps are lit.',
+  traits:{bold:2,woody:1,warm:2,floral:2,fresh:0,soft:0},
+  c:{b1:'#4b2b2f',b2:'#1c0f12',l1:'#e1a3a9',l2:'#8c3f4b',glow:'#e8a9ae',ink:'#f1dcd9'}, photos:[],
+  rev:[['Isha T.','Bengaluru',5,'Rose done properly: dark, peppery and a bit smoky. Nothing like a florist.'],['Omar A.','Doha',4,'Strong projection in the first hour, then it settles into a lovely incense skin scent.']]},
+ {id:'first-rain', name:'First Rain', family:'Earth and green', line:'Vetiver · Petrichor · Fig leaf',
+  top:['Fig leaf','Green tea','Lemon peel'], heart:['Vetiver','Wet earth accord','Violet leaf'], base:['Oakmoss','Cedar','Clear musk'],
+  prices:[3900,5900,8900], long:3, sill:3,
+  desc:'The minute the monsoon reaches dry ground. Vetiver, cool stone and fig leaf, clean without a trace of soap.',
+  mood:'Open windows, wet pavement, a long walk with no destination.',
+  traits:{bold:0,woody:1,warm:0,floral:0,fresh:3,soft:2},
+  c:{b1:'#2c3b37',b2:'#0e1614',l1:'#c6d9bb',l2:'#5f7c63',glow:'#a9c7b6',ink:'#e1ebe0'}, photos:[],
+  rev:[['Kabir N.','Pune',5,'The only fresh scent I have found that does not smell like a detergent aisle.'],['Priya D.','Singapore',4,'Cool, green and calm. Perfect for humid days.']]},
+ {id:'amber-ghazal', name:'Amber Ghazal', family:'Warm amber', line:'Amber · Dates · Tonka',
+  top:['Dried dates','Cinnamon bark','Mandarin'], heart:['Labdanum','Benzoin','Tobacco leaf'], base:['Tonka bean','Amber','Vanilla'],
+  prices:[4800,7200,10900], long:5, sill:5,
+  desc:'Resin, dates and tonka, poured slow like honey. A fragrance that lingers the way a verse does, long after the reading.',
+  mood:'Midwinter, a crowded table, a long conversation.',
+  traits:{bold:2,woody:1,warm:3,floral:0,fresh:0,soft:1},
+  c:{b1:'#5c3716',b2:'#1d1008',l1:'#eeb050',l2:'#8a4a14',glow:'#f0b45a',ink:'#f6e3c3'}, photos:[],
+  rev:[['Rohan G.','Chennai',5,'Warm without being sugary. People asked what it was three times in one evening.'],['Amelia W.','New York',5,'Huge projection and lasts all day. A single spray is enough.']]}
+];
+
+/* Gift sets & discovery kit (prices in ₹) */
+const SETS = [
+ {id:'discovery', name:'The Discovery Set', price:1900, feature:true, art:'discovery',
+  line:'Six vials · 2 ml each', desc:'One vial of every composition in a linen-wrapped box. The full price is credited toward your first 50 ml bottle.'},
+ {id:'pair', name:'The Evening Pair', price:8900, art:['layl','amber-ghazal'], line:'Layl + Amber Ghazal · 2 × 30 ml', desc:'Two warm, deep extraits for long nights.'},
+ {id:'garden', name:'The Quiet Garden', price:7900, art:['yasmin-hour','chandan-veil'], line:'Yasmin Hour + Chandan Veil · 2 × 30 ml', desc:'Jasmine and sandalwood, soft and close.'},
+ {id:'coffret', name:'The Collector’s Coffret', price:17500, art:['gulab-smoke','first-rain','layl'], line:'Three 50 ml extraits of your choice', desc:'Three full bottles in a hand-finished coffret.'}
+];
+
+const MATS = [
+ {k:'oud', name:'Oud', origin:'Assam, India', txt:'Resin-soaked heartwood, aged for years in clay. Smoke, leather and a trace of dark fruit.', c:['#2a1a12','#0d0907','#c9a368']},
+ {k:'jasmine', name:'Jasmine sambac', origin:'Madurai, Tamil Nadu', txt:'Picked before dawn while the petals are closed. Green, indolic and almost creamy.', c:['#efe6d6','#cdbd9f','#fffaf0']},
+ {k:'sandal', name:'Sandalwood', origin:'Karnataka, India', txt:'Slow-growing heartwood, steam-distilled over days. Milky, soft and never sweet.', c:['#d9c19a','#8d6d46','#f1dfba']},
+ {k:'saffron', name:'Saffron', origin:'Pampore, Kashmir', txt:'Crimson threads, dried by hand. Honeyed, leathery and faintly metallic.', c:['#3b1a14','#130907','#d8533a']}
+];
+
+const JOURNAL = [
+ {tag:'Notes · 6 min read', t:'On oud: a slow education', d:'What ten years of smelling aged resin teaches you about patience.', k:'arch', c:['#2a1a12','#0e0a08','#c9a368']},
+ {tag:'Craft · 4 min read', t:'The hour jasmine opens', d:'A harvest at four in the morning, and why the timing matters.', k:'rings', c:['#e9dfcf','#bfae92','#6a5430']},
+ {tag:'Press · Replace with a real feature', t:'“Publication name” on the house', d:'Placeholder. Link your first feature or review here.', k:'lines', c:['#2c3b37','#0e1614','#a9c7b6']}
+];
+
+const QUIZ = [
+ {q:'Where does the evening take you?', o:[
+   ['A candlelit table for two',{warm:2,bold:2}], ['A walk after the rain',{fresh:3,soft:1}],
+   ['A garden at dusk',{floral:3,soft:1}], ['A quiet room full of books',{woody:3,soft:1}]]},
+ {q:'Choose a fabric.', o:[
+   ['Raw silk',{floral:2,soft:2}], ['Worn leather',{bold:2,woody:2,warm:1}],
+   ['Washed linen',{fresh:3}], ['Dark velvet',{warm:2,bold:2}]]},
+ {q:'How present should it be?', o:[
+   ['A whisper at the collar',{soft:3}], ['Noticed when you lean in',{soft:1,woody:1,floral:1}], ['Noticed across the room',{bold:3}]]},
+ {q:'Which season is yours?', o:[
+   ['Monsoon',{fresh:3}], ['Winter',{warm:3,woody:1}], ['Spring',{floral:3}], ['Autumn',{woody:2,warm:2}]]}
+];
+
+const STORES = {
+  'Hyderabad': ['Flagship atelier', '12 Sample Road, Banjara Hills', 'Hyderabad 500034'],
+  'Mumbai': ['Boutique', '8 Placeholder Lane, Colaba', 'Mumbai 400001'],
+  'New Delhi': ['Boutique', '5 Example Marg, Khan Market', 'New Delhi 110003'],
+  'Dubai': ['Counter', 'Sample Mall, Level 1', 'Dubai, UAE']
+};
+
+/* =====================================================================
+   HELPERS
+   ===================================================================== */
+const $ = (s, r=document) => r.querySelector(s);
+const $$ = (s, r=document) => [...r.querySelectorAll(s)];
+const fmt = n => '₹' + n.toLocaleString('en-IN');
+const SIZES = [30, 50, 100];
+const byId = id => P.find(p => p.id === id);
+const store = {
+  get(k, d){ try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch(e){ return d; } },
+  set(k, v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch(e){} }
+};
+let uid = 0;
+
+const ICON = {
+  top:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="7"/><path d="M12 5v14M5 12h14M7 7l10 10M17 7L7 17"/></svg>',
+  heart:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/><path d="M12 10C10 6 11 3 12 3s2 3 0 7zM12 14c2 4 1 7 0 7s-2-3 0-7zM10 12C6 10 3 11 3 12s3 2 7 0zM14 12c4 2 7 1 7 0s-3-2-7 0z"/></svg>',
+  base:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="2"/></svg>',
+  heartBtn:'<svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.4A4 4 0 0 1 19 10c0 5.600-7 10-7 10z"/></svg>',
+  sun:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.500 1.500M17.500 17.500L19 19M5 19l1.500-1.500M17.500 6.500L19 5"/></svg>',
+  moon:'<svg viewBox="0 0 24 24"><path d="M20 14.500A8 8 0 0 1 9.500 4 8 8 0 1 0 20 14.500z"/></svg>'
+};
+
+/* =====================================================================
+   GENERATED ARTWORK (placeholders)
+   ===================================================================== */
+// One flacon, drawn in a 600x750 space. k = unique id suffix for gradients.
+function bottleG(p, k, label=true){
+  const c = p.c;
+  return `<g>
+  <defs>
+    <linearGradient id="gl${k}" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity=".05"/><stop offset=".35" stop-color="#fff" stop-opacity=".28"/><stop offset=".7" stop-color="#fff" stop-opacity=".04"/><stop offset="1" stop-color="#fff" stop-opacity=".16"/></linearGradient>
+    <linearGradient id="lq${k}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${c.l1}"/><stop offset="1" stop-color="${c.l2}"/></linearGradient>
+    <linearGradient id="cp${k}" x1="0" x2="1"><stop offset="0" stop-color="#9c7e4a"/><stop offset=".4" stop-color="#ecd9ae"/><stop offset="1" stop-color="#8a6c3c"/></linearGradient>
+  </defs>
+  <ellipse cx="300" cy="612" rx="120" ry="11" fill="#000" opacity=".35"/>
+  <rect x="210" y="290" width="180" height="316" rx="10" fill="#fff" fill-opacity=".07" stroke="#fff" stroke-opacity=".25"/>
+  <rect x="219" y="330" width="162" height="268" rx="6" fill="url(#lq${k})" opacity=".92"/>
+  <rect x="275" y="262" width="50" height="32" fill="#fff" fill-opacity=".1" stroke="#fff" stroke-opacity=".2"/>
+  <rect x="255" y="160" width="90" height="106" rx="5" fill="url(#cp${k})"/>
+  <rect x="255" y="160" width="90" height="106" rx="5" fill="none" stroke="#000" stroke-opacity=".2"/>
+  <rect x="210" y="290" width="180" height="316" rx="10" fill="url(#gl${k})"/>
+  <rect x="224" y="300" width="9" height="296" fill="#fff" opacity=".14"/>
+  ${label ? `<rect x="240" y="440" width="120" height="116" fill="${c.b1}" fill-opacity=".35" stroke="${c.ink}" stroke-opacity=".6"/>
+  <text x="300" y="476" text-anchor="middle" font-family="Jost,sans-serif" font-size="8.500" letter-spacing="3" fill="${c.ink}">BAIT AL SAJAHAF</text>
+  <text x="300" y="512" text-anchor="middle" font-family="Cormorant Garamond,Georgia,serif" font-size="24" fill="${c.ink}">${p.name}</text>
+  <text x="300" y="538" text-anchor="middle" font-family="Jost,sans-serif" font-size="6.500" letter-spacing="2.500" fill="${c.ink}" opacity=".8">EXTRAIT DE PARFUM</text>` : ''}
+  </g>`;
+}
+
+// variant 0 front, 1 backlit, 2 with box, 3 detail
+function art(p, v=0){
+  const k = ++uid, c = p.c;
+  let inner = '', defs = `<linearGradient id="bg${k}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${c.b1}"/><stop offset="1" stop-color="${c.b2}"/></linearGradient>
+    <radialGradient id="gw${k}"><stop offset="0" stop-color="${c.glow}" stop-opacity=".75"/><stop offset="1" stop-color="${c.glow}" stop-opacity="0"/></radialGradient>`;
+  if(v===1) inner += `<circle cx="300" cy="380" r="300" fill="url(#gw${k})"/><circle cx="300" cy="380" r="170" fill="none" stroke="${c.ink}" stroke-opacity=".25"/>`;
+  if(v===2) inner += `<rect x="318" y="330" width="214" height="330" fill="${c.b2}" fill-opacity=".55" stroke="${c.ink}" stroke-opacity=".5"/>
+    <text x="425" y="470" text-anchor="middle" font-family="Jost,sans-serif" font-size="9" letter-spacing="3.500" fill="${c.ink}">BAIT AL SAJAHAF</text>
+    <text x="425" y="506" text-anchor="middle" font-family="Cormorant Garamond,Georgia,serif" font-size="26" fill="${c.ink}">${p.name}</text>
+    <line x1="385" y1="526" x2="465" y2="526" stroke="${c.ink}" stroke-opacity=".5"/>`;
+  const g = bottleG(p, k, v!==3);
+  const tf = v===2 ? 'translate(-110 0)' : v===3 ? 'translate(300 330) scale(2) translate(-300 -230)' : v===1 ? 'translate(300 380) scale(1.12) translate(-300 -380)' : '';
+  return `<svg viewBox="0 0 600 750" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Placeholder image of ${p.name}. Replace with your own photography." xmlns="http://www.w3.org/2000/svg"><defs>${defs}</defs>
+    <rect width="600" height="750" fill="url(#bg${k})"/>${inner}<g transform="${tf}">${g}</g></svg>`;
+}
+// Real photo if provided, otherwise artwork
+function pic(p, v){ return (p.photos && p.photos[v]) ? `<img src="${p.photos[v]}" alt="${p.name} extrait de parfum, view ${v+1}" loading="lazy">` : art(p, v); }
+
+function giftArt(ids, w=800, h=600){
+  const ps = ids.map(byId), k = ++uid, n = ps.length;
+  const gs = ps.map((p,i)=>{ const s = n===1 ? .8 : n===2 ? .62 : .5; const x = (w/2) - 300*s + (i-(n-1)/2) * (n===2?190:170); return `<g transform="translate(${x} ${h-640*s-10}) scale(${s})">${bottleG(p,k+'x'+i)}</g>`; }).join('');
+  return `<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Placeholder image of a gift set. Replace with your own photography." xmlns="http://www.w3.org/2000/svg">
+  <defs><linearGradient id="gb${k}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a2019"/><stop offset="1" stop-color="#0d0a08"/></linearGradient>
+  <radialGradient id="gg${k}"><stop offset="0" stop-color="#c8ad82" stop-opacity=".35"/><stop offset="1" stop-color="#c8ad82" stop-opacity="0"/></radialGradient></defs>
+  <rect width="${w}" height="${h}" fill="url(#gb${k})"/><circle cx="${w/2}" cy="${h/2}" r="${h*.6}" fill="url(#gg${k})"/>
+  <rect x="${w*.1}" y="${h*.78}" width="${w*.8}" height="1" fill="#c8ad82" opacity=".4"/>${gs}</svg>`;
+}
+function discoveryArt(w=1000, h=625){
+  const k = ++uid;
+  const vials = P.map((p,i)=>{ const x = w/2 - 6*62 + i*124 + 31; const hh = 150 + (i%2)*16; const y = h/2 - 20 - hh/2 + 40;
+    return `<g transform="translate(${x} ${y})"><defs><linearGradient id="v${k}${i}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${p.c.l1}"/><stop offset="1" stop-color="${p.c.l2}"/></linearGradient></defs>
+    <rect x="-24" y="0" width="48" height="${hh}" rx="5" fill="url(#v${k}${i})"/><rect x="-24" y="0" width="48" height="${hh}" rx="5" fill="#fff" fill-opacity=".1" stroke="#fff" stroke-opacity=".3"/>
+    <rect x="-17" y="-34" width="34" height="36" rx="3" fill="#d8c394"/><rect x="-18" y="${hh-50}" width="36" height="34" fill="#0c0b0a" fill-opacity=".35" stroke="#e8d9bd" stroke-opacity=".6"/>
+    <text x="0" y="${hh-28}" text-anchor="middle" font-family="Cormorant Garamond,Georgia,serif" font-size="9" fill="#efe8dc">${p.name.split(' ')[0]}</text></g>`; }).join('');
+  return `<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Placeholder image of six sample vials. Replace with your own photography." xmlns="http://www.w3.org/2000/svg">
+  <defs><linearGradient id="db${k}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a2019"/><stop offset="1" stop-color="#0d0a08"/></linearGradient></defs>
+  <rect width="${w}" height="${h}" fill="url(#db${k})"/><rect x="${w*.08}" y="${h*.2}" width="${w*.84}" height="${h*.6}" fill="none" stroke="#c8ad82" stroke-opacity=".35"/>${vials}</svg>`;
+}
+
+// Atmospheric plates for ingredients, journal and story
+function plate(kind, c, w=600, h=750){
+  const k = ++uid, [c1, c2, ink] = c; let g = '';
+  const cx = w/2, cy = h*.5;
+  if(kind==='oud') for(let i=0;i<28;i++){ const y = 30+i*26; g += `<path d="M-20 ${y} C 150 ${y-40+(i%5)*14}, 330 ${y+50-(i%7)*10}, ${w+40} ${y-20+(i%3)*12}" fill="none" stroke="${ink}" stroke-opacity="${i%2?.18:.34}" stroke-width="${i%4?1:2}"/>`; }
+  if(kind==='jasmine'){ for(let f=0;f<2;f++){ const ox = f? 130:0, oy = f? 190:0, s = f? .55:1; let pet=''; for(let a=0;a<5;a++) pet += `<ellipse cx="${cx}" cy="${cy-90}" rx="44" ry="92" transform="rotate(${a*72} ${cx} ${cy})" fill="${ink}" fill-opacity=".92" stroke="${c2}" stroke-opacity=".35"/>`;
+      g += `<g transform="translate(${ox} ${oy}) translate(${cx} ${cy}) scale(${s}) translate(${-cx} ${-cy})">${pet}<circle cx="${cx}" cy="${cy}" r="16" fill="#d4b06a"/></g>`; } }
+  if(kind==='sandal') for(let i=1;i<16;i++) g += `<circle cx="${cx+i*3}" cy="${cy+30}" r="${i*21}" fill="none" stroke="${ink}" stroke-opacity="${.5-i*.025}" stroke-width="${i%3?1:2}"/>`;
+  if(kind==='saffron') for(let i=0;i<10;i++){ const x0 = 90+i*46; g += `<path d="M${x0} ${h+20} C ${x0+90} ${h*.65}, ${x0-60} ${h*.4}, ${x0+60+i*8} 90" fill="none" stroke="${ink}" stroke-opacity=".85" stroke-width="3" stroke-linecap="round"/><circle cx="${x0+60+i*8}" cy="90" r="5" fill="${ink}"/>`; }
+  if(kind==='arch') g += `<path d="M${w*.2} ${h*.92} V${h*.42} A${w*.3} ${w*.3} 0 0 1 ${w*.8} ${h*.42} V${h*.92} Z" fill="${ink}" fill-opacity=".14" stroke="${ink}" stroke-opacity=".6"/><path d="M${w*.32} ${h*.92} V${h*.45} A${w*.18} ${w*.18} 0 0 1 ${w*.68} ${h*.45} V${h*.92} Z" fill="${c2}" fill-opacity=".6"/><circle cx="${cx}" cy="${h*.3}" r="${w*.05}" fill="${ink}"/>`;
+  if(kind==='rings') for(let i=1;i<8;i++) g += `<circle cx="${cx}" cy="${h*.78}" r="${i*w*.09}" fill="none" stroke="${ink}" stroke-opacity="${.75-i*.08}"/>`;
+  if(kind==='lines') for(let i=0;i<34;i++){ const x = 40+i*(w-80)/33, hh = 120+((i*37)%9)*34; g += `<line x1="${x}" x2="${x}" y1="${h-40}" y2="${h-40-hh}" stroke="${ink}" stroke-opacity=".6"/>`; }
+  return `<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Placeholder artwork. Replace with your own photography." xmlns="http://www.w3.org/2000/svg">
+  <defs><linearGradient id="pl${k}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${c1}"/><stop offset="1" stop-color="${c2}"/></linearGradient></defs>
+  <rect width="${w}" height="${h}" fill="url(#pl${k})"/>${g}</svg>`;
+}
+const photo = (src, alt) => `<img src="${src}" alt="${alt}" loading="lazy">`;
+
+/* =====================================================================
+   RENDER: static sections
+   ===================================================================== */
+function cardHTML(p){
+  const w = wish.has(p.id);
+  return `<article class="card rv">
+    <a class="card-img" href="#product-${p.id}" aria-label="View ${p.name}"><span class="im a">${pic(p,0)}</span><span class="im b">${pic(p,1)}</span></a>
+    <button class="wish" data-wish="${p.id}" aria-pressed="${w}" aria-label="${w?'Remove':'Add'} ${p.name} ${w?'from':'to'} wishlist">${ICON.heartBtn}</button>
+    <div class="card-body"><p class="eyebrow">${p.family}</p><h3><a href="#product-${p.id}">${p.name}</a></h3>
+    <p class="notes">${p.line}</p><p class="price">From ${fmt(p.prices[0])}</p></div></article>`;
+}
+function renderGrid(){ $('#grid').innerHTML = P.map(cardHTML).join(''); }
+
+function renderStatic(){
+  // Hero bottle (placeholder or your own image)
+  $('#heroBottle').innerHTML = IMG.hero ? photo(IMG.hero, 'Bait Al Sajahaf flacon') :
+    `<svg viewBox="170 140 260 500" role="img" aria-label="Placeholder flacon" xmlns="http://www.w3.org/2000/svg">${bottleG(byId('layl'),'hero')}</svg>`;
+  // Story
+  $('[data-slot="story"]').innerHTML = IMG.story ? photo(IMG.story, 'The Bait Al Sajahaf atelier') : plate('arch', ['#2a1a12','#0e0a08','#c9a368']);
+  // Craft
+  $('#mats').innerHTML = MATS.map(m => `<article class="mat rv"><div class="slot">${IMG.craft[m.k] ? photo(IMG.craft[m.k], m.name) : plate(m.k, m.c)}</div>
+    <p class="eyebrow">${m.origin}</p><h3>${m.name}</h3><p>${m.txt}</p></article>`).join('');
+  // Gifts
+  $('#giftGrid').innerHTML = SETS.map(s => {
+    const a = s.art==='discovery' ? discoveryArt() : giftArt(s.art);
+    const im = IMG.gifts[s.id] ? photo(IMG.gifts[s.id], s.name) : a;
+    return `<article class="gift rv ${s.feature?'feature':''}"><div class="slot">${im}</div><div class="copy"><p class="eyebrow">${s.line}</p><h3>${s.name}</h3><p>${s.desc}</p>
+    <div class="row"><span class="price">${fmt(s.price)}</span><button class="btn ${s.feature?'solid':''}" data-addset="${s.id}">Add to bag</button></div></div></article>`;
+  }).join('');
+  // Journal
+  $('#jgrid').innerHTML = JOURNAL.map((j,i) => `<article class="j rv"><a href="#journal" aria-label="${j.t}"><div class="slot">${IMG.journal[i] ? photo(IMG.journal[i], j.t) : plate(j.k, j.c, 800, 600)}</div>
+    <p class="eyebrow">${j.tag}</p><h3>${j.t}</h3><p>${j.d}</p></a></article>`).join('');
+  // Stores
+  $('#city').innerHTML = Object.keys(STORES).map(c => `<option>${c}</option>`).join('');
+  const showStore = () => { const s = STORES[$('#city').value]; $('#addr').innerHTML = `<b style="font-weight:400;color:var(--ink)">${s[0]}</b><br>${s[1]}<br>${s[2]}`; };
+  $('#city').addEventListener('change', showStore); showStore();
+  renderGrid();
+}
+
+/* =====================================================================
+   STATE: cart + wishlist
+   ===================================================================== */
+let cart = store.get('bas-cart', []);
+const wish = new Set(store.get('bas-wish', []));
+const itemOf = id => byId(id) || SETS.find(s => s.id === id);
+const priceOf = (it, size) => it.prices ? it.prices[SIZES.indexOf(size)] : it.price;
+const save = () => { store.set('bas-cart', cart); store.set('bas-wish', [...wish]); };
+const count = () => cart.reduce((a, l) => a + l.qty, 0);
+const total = () => cart.reduce((a, l) => a + l.qty * priceOf(itemOf(l.id), l.size), 0);
+
+function addToCart(id, size, open=true){
+  const it = itemOf(id); const key = id + '|' + size;
+  const ex = cart.find(l => l.key === key);
+  if(ex) ex.qty++; else cart.push({key, id, size, qty:1});
+  save(); updateBadges(); toast(`${it.name} added to your bag`);
+  if(open) openDrawer('cart');
+}
+function toggleWish(id){
+  const p = byId(id); if(!p) return;
+  if(wish.has(id)){ wish.delete(id); toast('Removed from wishlist'); } else { wish.add(id); toast('Saved to wishlist'); }
+  save(); updateBadges();
+  $$(`[data-wish="${id}"]`).forEach(b => { const on = wish.has(id); b.setAttribute('aria-pressed', on); b.setAttribute('aria-label', `${on?'Remove':'Add'} ${p.name} ${on?'from':'to'} wishlist`); });
+  if(drawerMode==='wish' && $('#drawer').classList.contains('on')) renderDrawer();
+}
+function updateBadges(){
+  $('#cartN').textContent = count() || ''; $('#wishN').textContent = wish.size || '';
+  $('#btnCart').setAttribute('aria-label', `Open bag, ${count()} items`); $('#btnWish').setAttribute('aria-label', `Wishlist, ${wish.size} items`);
+}
+
+/* =====================================================================
+   DRAWER
+   ===================================================================== */
+let drawerMode = 'cart', lastFocus = null;
+const FREE_SHIP = 5000;
+function lineArt(it){ return it.prices ? art(it,0) : (it.art==='discovery' ? discoveryArt(400,500) : giftArt(it.art,400,500)); }
+function renderDrawer(){
+  const body = $('#dBody'), foot = $('#dFoot');
+  if(drawerMode==='cart'){
+    $('#dTitle').textContent = 'Your bag';
+    if(!cart.length){
+      body.innerHTML = `<div class="empty"><p class="lead">Your bag is empty.</p><p>Begin with the Discovery Set, or find your fragrance with the Scent Finder.</p><a class="btn" href="#collection" data-close>View the collection</a></div>`; foot.innerHTML=''; return;
+    }
+    body.innerHTML = cart.map(l => { const it = itemOf(l.id);
+      return `<div class="line"><div class="slot">${lineArt(it)}</div><div><h3>${it.name}</h3><p class="meta">${it.prices ? l.size+' ml · Extrait de parfum' : it.line}</p>
+      <div class="ctl"><div class="qty"><button data-q="-1" data-key="${l.key}" aria-label="Decrease quantity of ${it.name}">&minus;</button><span aria-live="polite">${l.qty}</span><button data-q="1" data-key="${l.key}" aria-label="Increase quantity of ${it.name}">+</button></div>
+      <span>${fmt(l.qty*priceOf(it,l.size))}</span></div><button class="rm" data-rm="${l.key}" style="margin-top:12px">Remove</button></div></div>`; }).join('');
+    const t = total(), pct = Math.min(100, t/FREE_SHIP*100);
+    foot.innerHTML = `<div class="ship"><span>${t>=FREE_SHIP ? 'Complimentary shipping applied.' : `Add ${fmt(FREE_SHIP-t)} for complimentary shipping.`}</span><i><b style="width:${pct}%"></b></i></div>
+      <label class="chk"><input type="checkbox" id="giftwrap"> Gift wrap with a handwritten note (complimentary)</label>
+      <div class="sub-row"><span>Subtotal</span><span>${fmt(t)}</span></div>
+      <button class="btn solid full" id="checkout">Checkout</button>`;
+  } else {
+    $('#dTitle').textContent = 'Wishlist';
+    const items = [...wish].map(byId);
+    if(!items.length){ body.innerHTML = `<div class="empty"><p class="lead">Nothing saved yet.</p><p>Tap the heart on any fragrance to keep it here.</p></div>`; foot.innerHTML=''; return; }
+    body.innerHTML = items.map(p => `<div class="line"><div class="slot">${art(p,0)}</div><div><h3>${p.name}</h3><p class="meta">${p.line}</p>
+      <div class="ctl"><span>From ${fmt(p.prices[0])}</span><a class="link" href="#product-${p.id}" data-close>View</a></div><button class="rm" data-wish="${p.id}" data-rmwish style="margin-top:12px">Remove</button></div></div>`).join('');
+    foot.innerHTML = '';
+  }
+}
+function trap(el, e){
+  if(e.key !== 'Tab') return;
+  const f = $$('a[href],button:not([disabled]),input,select,textarea,[tabindex]:not([tabindex="-1"])', el).filter(x => x.offsetParent !== null);
+  if(!f.length) return; const first = f[0], last = f[f.length-1];
+  if(e.shiftKey && document.activeElement===first){ e.preventDefault(); last.focus(); }
+  else if(!e.shiftKey && document.activeElement===last){ e.preventDefault(); first.focus(); }
+}
+function openDrawer(mode){
+  closeSearch(true); drawerMode = mode; renderDrawer(); lastFocus = document.activeElement;
+  $('#drawer').classList.add('on'); $('#drawer').setAttribute('aria-hidden','false'); $('#scrim').classList.add('on');
+  setTimeout(() => $('#dClose').focus(), 60);
+}
+function closeDrawer(){
+  if(!$('#drawer').classList.contains('on')) return;
+  $('#drawer').classList.remove('on'); $('#drawer').setAttribute('aria-hidden','true');
+  if(!$('#search').classList.contains('on')) $('#scrim').classList.remove('on');
+  if(lastFocus && lastFocus.focus) lastFocus.focus();
+}
+
+/* =====================================================================
+   SEARCH
+   ===================================================================== */
+function openSearch(){
+  closeDrawer(); lastFocus = document.activeElement;
+  $('#search').classList.add('on'); $('#search').setAttribute('aria-hidden','false'); $('#scrim').classList.add('on');
+  $('#sq').value = ''; renderSearch(''); setTimeout(() => $('#sq').focus(), 60);
+}
+function closeSearch(silent){
+  if(!$('#search').classList.contains('on')) return;
+  $('#search').classList.remove('on'); $('#search').setAttribute('aria-hidden','true');
+  if(!$('#drawer').classList.contains('on')) $('#scrim').classList.remove('on');
+  if(!silent && lastFocus && lastFocus.focus) lastFocus.focus();
+}
+function renderSearch(q){
+  q = q.trim().toLowerCase();
+  const hits = P.filter(p => !q || [p.name,p.family,p.line,...p.top,...p.heart,...p.base,p.mood].join(' ').toLowerCase().includes(q));
+  $('#sres').innerHTML = hits.length ? hits.map(p => `<a href="#product-${p.id}" data-close><div class="slot">${art(p,0)}</div><div><h3>${p.name}</h3><span>${p.line}</span></div><span>${fmt(p.prices[0])}</span></a>`).join('')
+    : `<p class="mute" style="padding:24px 0">No fragrance matches &ldquo;${q.replace(/[<>&"]/g,'')}&rdquo;. Try oud, jasmine or amber.</p>`;
+}
+
+/* =====================================================================
+   PRODUCT PAGE
+   ===================================================================== */
+let sel = {id:null, size:50};
+function productHTML(p){
+  const avg = (p.rev.reduce((a,r)=>a+r[2],0)/p.rev.length).toFixed(1);
+  const hrs = ['4 to 5','6 to 7','8 to 9','10 to 12','12 plus'][p.long-1];
+  const sil = ['Intimate','Soft','Moderate','Enveloping','Commanding'][p.sill-1];
+  const segs = n => Array.from({length:5},(_,i)=>`<i class="${i<n?'on':''}"></i>`).join('');
+  const others = P.filter(x => x.id !== p.id).slice(0,3);
+  return `
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="#top">Home</a><span>/</span><a href="#collection">Collection</a><span>/</span><span>${p.name}</span></nav>
+  <div class="pp">
+    <div class="gal">
+      <div class="main" id="gMain">${pic(p,0)}</div>
+      <div class="thumbs" role="group" aria-label="Product images">${[0,1,2,3].map(i=>`<button data-view="${i}" aria-label="Show image ${i+1}" aria-current="${i===0}">${pic(p,i)}</button>`).join('')}</div>
+      <!-- REPLACE: set photos:[] on this product in the P array to use your own four images -->
+    </div>
+    <div class="info">
+      <div class="sub"><p class="eyebrow">${p.family} · Extrait de parfum</p><h1>${p.name}</h1>
+        <p class="stars" aria-label="Rated ${avg} out of 5">★★★★★ <span class="mute" style="letter-spacing:.06em;font-size:13px">${avg} · ${p.rev.length} reviews</span></p></div>
+      <p class="lead">${p.desc}</p>
+      <div><span class="label">Size</span>
+        <div class="sizes" role="group" aria-label="Choose size">${SIZES.map((s,i)=>`<button data-size="${s}" aria-pressed="${s===sel.size}">${s} ml<small>${fmt(p.prices[i])}</small></button>`).join('')}</div></div>
+      <div class="big-price" id="pPrice">${fmt(p.prices[SIZES.indexOf(sel.size)])}</div>
+      <div class="buy"><button class="btn solid" id="pAdd">Add to bag</button>
+        <button class="wish" data-wish="${p.id}" aria-pressed="${wish.has(p.id)}" aria-label="${wish.has(p.id)?'Remove from':'Add to'} wishlist">${ICON.heartBtn}</button></div>
+      <div><span class="label">Mood</span><p>${p.mood}</p></div>
+      <div><span class="label">Fragrance pyramid</span>
+        <div class="pyr">
+          <div>${ICON.top}<p><b>Top</b><span>${p.top.join(', ')}</span></p></div>
+          <div>${ICON.heart}<p><b>Heart</b><span>${p.heart.join(', ')}</span></p></div>
+          <div>${ICON.base}<p><b>Base</b><span>${p.base.join(', ')}</span></p></div>
+        </div></div>
+      <div class="meters">
+        <div class="meter"><span>Longevity</span><span class="segs" aria-hidden="true">${segs(p.long)}</span><em>${hrs} hrs</em></div>
+        <div class="meter"><span>Sillage</span><span class="segs" aria-hidden="true">${segs(p.sill)}</span><em>${sil}</em></div>
+      </div>
+      <div>
+        <details><summary>Shipping</summary><p>Complimentary shipping on orders above ${fmt(FREE_SHIP)}. Orders leave the atelier within two working days and arrive in three to five. Tracked and insured.</p></details>
+        <details><summary>Gift wrap</summary><p>Every bottle arrives in a linen-wrapped box. Add a handwritten note and a ribbon at checkout, at no charge.</p></details>
+        <details><summary>Care and returns</summary><p>Keep away from heat and direct light. Unopened bottles may be returned within 14 days. Opened vials cannot be exchanged.</p></details>
+      </div>
+    </div>
+  </div>
+  <section class="reviews" style="padding:0;margin-top:clamp(64px,9vw,120px)" aria-labelledby="rvH">
+    <div><p class="eyebrow">Reviews</p><h2 id="rvH" style="margin-top:14px">Worn by the people who wrote them.</h2></div>
+    <div class="rgrid">${p.rev.map(r=>`<article class="rev"><span class="stars" aria-label="${r[2]} out of 5">${'★'.repeat(r[2])}${'☆'.repeat(5-r[2])}</span><p>${r[3]}</p><small>${r[0]} · ${r[1]}</small></article>`).join('')}</div>
+  </section>
+  <section class="also" style="padding:0;margin-top:clamp(64px,9vw,120px)" aria-labelledby="alsoH">
+    <div class="head" style="margin-bottom:40px"><p class="eyebrow">Continue exploring</p><h2 id="alsoH">You may also wear</h2></div>
+    <div class="grid">${others.map(cardHTML).join('')}</div>
+  </section>`;
+}
+function showProductContent(p){
+  sel = {id:p.id, size:50};
+  const el = $('#product'); el.innerHTML = productHTML(p);
+  document.title = `${p.name} · Bait Al Sajahaf`;
+  // Product structured data
+  let ld = $('#ldProduct'); if(!ld){ ld = document.createElement('script'); ld.type='application/ld+json'; ld.id='ldProduct'; document.head.appendChild(ld); }
+  ld.textContent = JSON.stringify({'@context':'https://schema.org','@type':'Product',name:p.name,brand:{'@type':'Brand',name:'Bait Al Sajahaf'},description:p.desc,
+    offers:{'@type':'Offer',priceCurrency:'INR',price:p.prices[1],availability:'https://schema.org/InStock'},
+    aggregateRating:{'@type':'AggregateRating',ratingValue:(p.rev.reduce((a,r)=>a+r[2],0)/p.rev.length).toFixed(1),reviewCount:p.rev.length}});
+  initReveal(el);
+}
+
+/* =====================================================================
+   SCENT FINDER
+   ===================================================================== */
+let qs = {i:0, score:{}};
+function renderQuiz(){
+  const box = $('#quiz');
+  if(qs.i < QUIZ.length){
+    const q = QUIZ[qs.i];
+    box.innerHTML = `<div class="prog" aria-hidden="true">${QUIZ.map((_,i)=>`<i class="${i<=qs.i?'on':''}"></i>`).join('')}</div>
+      <p class="eyebrow">Question ${qs.i+1} of ${QUIZ.length}</p><h3>${q.q}</h3>
+      <div class="opts">${q.o.map((o,i)=>`<button class="opt" data-opt="${i}">${o[0]}</button>`).join('')}</div>`;
+  } else {
+    const ranked = P.map(p => ({p, s:Object.entries(qs.score).reduce((a,[k,v]) => a + v*(p.traits[k]||0), 0)})).sort((a,b)=>b.s-a.s);
+    const best = ranked[0].p, next = ranked[1].p;
+    box.innerHTML = `<div class="prog" aria-hidden="true">${QUIZ.map(()=>'<i class="on"></i>').join('')}</div><p class="eyebrow">Your fragrance</p>
+      <div class="result"><div class="slot">${art(best,0)}</div><div style="display:grid;gap:14px"><h3>${best.name}</h3><p class="mute">${best.line}</p><p>${best.desc}</p>
+      <div class="acts"><a class="btn solid" href="#product-${best.id}">View ${best.name}</a><button class="link" id="quizAgain">Take it again</button></div>
+      <p class="mute" style="font-size:13px">Also consider <a class="link" href="#product-${next.id}" style="padding-bottom:2px">${next.name}</a></p></div></div>`;
+  }
+}
+
+/* =====================================================================
+   ROUTER  (hash: #product-layl or a section id such as #collection)
+   ===================================================================== */
+let view = 'home';
+function setNav(){ $('#nav').classList.toggle('top', view==='home' && window.scrollY < 40); }
+function swap(fn){
+  const m = $('#main'); m.classList.add('out');
+  setTimeout(() => { fn(); m.classList.remove('out'); }, document.documentElement.dataset.first ? 0 : 260);
+}
+function route(){
+  const h = decodeURIComponent(location.hash.slice(1));
+  closeMenu();
+  if(h.startsWith('product-') && byId(h.slice(8))){
+    const p = byId(h.slice(8)); const was = view; view = 'product';
+    const go = () => { $('#home').hidden = true; $('#product').hidden = false; showProductContent(p); window.scrollTo(0,0); setNav(); };
+    was==='product' || was==='home' ? swap(go) : go();
+    return;
+  }
+  const go = () => {
+    const wasProduct = view==='product'; view = 'home';
+    $('#product').hidden = true; $('#home').hidden = false; document.title = 'Bait Al Sajahaf';
+    const t = h && h!=='top' ? document.getElementById(h) : null;
+    if(t){ wasProduct ? (t.scrollIntoView({behavior:'auto'})) : t.scrollIntoView({behavior:'smooth'}); }
+    else if(wasProduct || h==='top') window.scrollTo({top:0, behavior: wasProduct?'auto':'smooth'});
+    setNav(); initReveal($('#home'));
+  };
+  view==='product' ? swap(go) : go();
+}
+
+/* =====================================================================
+   MOTION: scroll reveal + parallax
+   ===================================================================== */
+let io;
+function initReveal(root){
+  const els = $$('.rv', root).filter(e => !e.dataset.seen);
+  if(!('IntersectionObserver' in window)) return;
+  io = io || new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting){ e.target.classList.remove('pre'); io.unobserve(e.target); } }), {threshold:.12, rootMargin:'0px 0px -6% 0px'});
+  els.forEach(e => { e.dataset.seen = 1; if(e.getBoundingClientRect().top > innerHeight*0.98){ e.classList.add('pre'); io.observe(e); } });
+  setTimeout(() => els.forEach(e => e.classList.remove('pre')), 6000); // safety net
+}
+let ticking = false;
+function onScroll(){
+  if(ticking) return; ticking = true;
+  requestAnimationFrame(() => {
+    const y = window.scrollY; setNav();
+    if(view==='home' && y < innerHeight*1.3 && !matchMedia('(prefers-reduced-motion:reduce)').matches){
+      $('#heroBg').style.transform = `translate3d(0,${y*.22}px,0)`;
+      $('#heroBottle').style.transform = (innerWidth>=900 ? '' : 'translateX(50%) ') + `translate3d(0,${y*.1}px,0)`;
+    }
+    ticking = false;
+  });
+}
+
+/* =====================================================================
+   THEME, MENU, TOAST
+   ===================================================================== */
+function applyTheme(t){
+  document.documentElement.dataset.theme = t; store.set('bas-theme', t);
+  const b = $('#btnTheme'); b.innerHTML = t==='dark' ? ICON.sun : ICON.moon;
+  b.setAttribute('aria-label', t==='dark' ? 'Switch to light theme' : 'Switch to dark theme');
+  $('#menuTheme').textContent = t==='dark' ? 'Light theme' : 'Dark theme';
+}
+function toggleTheme(){ applyTheme(document.documentElement.dataset.theme==='dark' ? 'light' : 'dark'); }
+function openMenu(){ $('#menu').classList.add('open'); $('#menu').setAttribute('aria-hidden','false'); $('#burger').setAttribute('aria-expanded','true'); $('#nav').classList.remove('top'); document.body.style.overflow='hidden'; }
+function closeMenu(){ $('#menu').classList.remove('open'); $('#menu').setAttribute('aria-hidden','true'); $('#burger').setAttribute('aria-expanded','false'); document.body.style.overflow=''; setNav(); }
+let tt;
+function toast(msg){ const t = $('#toast'); t.textContent = msg; t.classList.add('on'); clearTimeout(tt); tt = setTimeout(() => t.classList.remove('on'), 2400); }
+
+/* =====================================================================
+   EVENTS
+   ===================================================================== */
+document.addEventListener('click', e => {
+  const t = e.target;
+  const wb = t.closest('[data-wish]');
+  if(wb){ e.preventDefault(); toggleWish(wb.dataset.wish); return; }
+  const as = t.closest('[data-addset]'); if(as){ addToCart(as.dataset.addset, 'Set'); return; }
+  const q = t.closest('[data-q]'); if(q){ const l = cart.find(x => x.key===q.dataset.key); if(l){ l.qty += +q.dataset.q; if(l.qty<1) cart = cart.filter(x=>x!==l); save(); updateBadges(); renderDrawer(); } return; }
+  const rm = t.closest('[data-rm]'); if(rm){ cart = cart.filter(x => x.key!==rm.dataset.rm); save(); updateBadges(); renderDrawer(); return; }
+  if(t.closest('#checkout')){ toast('Demo store: connect your payment provider to enable checkout'); return; }
+  const sz = t.closest('[data-size]'); if(sz){ sel.size = +sz.dataset.size; $$('[data-size]').forEach(b => b.setAttribute('aria-pressed', b===sz)); const p = byId(sel.id); $('#pPrice').textContent = fmt(p.prices[SIZES.indexOf(sel.size)]); return; }
+  if(t.closest('#pAdd')){ addToCart(sel.id, sel.size); return; }
+  const v = t.closest('[data-view]'); if(v){ const p = byId(sel.id); const m = $('#gMain'); m.innerHTML = pic(p, +v.dataset.view); m.classList.remove('swap'); void m.offsetWidth; m.classList.add('swap'); $$('[data-view]').forEach(b => b.setAttribute('aria-current', b===v)); return; }
+  const op = t.closest('[data-opt]'); if(op){ const o = QUIZ[qs.i].o[+op.dataset.opt][1]; for(const k in o) qs.score[k] = (qs.score[k]||0) + o[k]; qs.i++; renderQuiz(); return; }
+  if(t.closest('#quizAgain')){ qs = {i:0, score:{}}; renderQuiz(); return; }
+  if(t.closest('[data-close]')){ closeDrawer(); closeSearch(true); return; }
+  // In-page anchors: let the router handle them so the URL stays a plain #name
+  const a = t.closest('a[href^="#"]');
+  if(a && a.getAttribute('href') !== '#'){
+    const id = a.getAttribute('href').slice(1);
+    if(location.hash === '#'+id && !id.startsWith('product-')){ e.preventDefault(); route(); }
+    closeMenu();
+  } else if(a){ e.preventDefault(); }
+});
+$('#btnCart').addEventListener('click', () => openDrawer('cart'));
+$('#btnWish').addEventListener('click', () => openDrawer('wish'));
+$('#dClose').addEventListener('click', closeDrawer);
+$('#btnSearch').addEventListener('click', openSearch);
+$('#sClose').addEventListener('click', () => closeSearch());
+$('#scrim').addEventListener('click', () => { closeDrawer(); closeSearch(); });
+$('#sq').addEventListener('input', e => renderSearch(e.target.value));
+$('#sq').addEventListener('keydown', e => { if(e.key==='Enter'){ const a = $('#sres a'); if(a){ location.hash = a.getAttribute('href').slice(1); closeSearch(true); } } });
+$('#btnTheme').addEventListener('click', toggleTheme);
+$('#menuTheme').addEventListener('click', toggleTheme);
+$('#burger').addEventListener('click', () => $('#menu').classList.contains('open') ? closeMenu() : openMenu());
+document.addEventListener('keydown', e => {
+  if(e.key==='Escape'){ closeDrawer(); closeSearch(); closeMenu(); }
+  if(e.key==='/' && !/input|textarea|select/i.test(document.activeElement.tagName)){ e.preventDefault(); openSearch(); }
+  if($('#drawer').classList.contains('on')) trap($('#drawer'), e);
+  if($('#search').classList.contains('on')) trap($('#search'), e);
+});
+$('#nform').addEventListener('submit', e => {
+  e.preventDefault(); const v = $('#email').value.trim(), m = $('#nmsg');
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)){ m.textContent = 'Please enter a valid email address.'; $('#email').focus(); return; }
+  m.textContent = 'Thank you. Your first letter arrives with the next harvest.'; $('#email').value = '';
+  // REPLACE: send the address to your email provider here.
+});
+window.addEventListener('scroll', onScroll, {passive:true});
+window.addEventListener('hashchange', route);
+
+/* =====================================================================
+   INIT
+   ===================================================================== */
+applyTheme(store.get('bas-theme', 'dark'));
+renderStatic(); renderQuiz(); updateBadges();
+document.documentElement.dataset.first = '1';
+route();
+delete document.documentElement.dataset.first;
+initReveal(document);
+onScroll();
+</script>
+</body>
+</html>
